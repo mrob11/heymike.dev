@@ -4,7 +4,7 @@ import { Link } from "gatsby"
 import BackgroundImage from "gatsby-background-image"
 import Tag from "./tag"
 
-export default function Hero({ post, readMore }) {
+export default function Hero({ post }) {
   return (
     <BackgroundImage
       fluid={post.heroImage.fluid}
@@ -20,7 +20,7 @@ export default function Hero({ post, readMore }) {
       >
         <div className="container mx-auto text-left md:px-32 lg:px-48 text-shadow">
           <h1 className="font-bold text-3xl mb-8 md:text-4xl xl:text-6xl leading-tight tracking-tight">
-            <Link to={readMore}>{post.title}</Link>
+            <Link to={`/posts/${post.slug}#post`}>{post.title}</Link>
           </h1>
           <div className="flex flex-row justify-start mb-8 flex-wrap">
             <time className="inline-block text-gray-200 mr-4 md:mr-16">
@@ -37,7 +37,7 @@ export default function Hero({ post, readMore }) {
             {post.description.description}
           </p>
           <Link
-            to={readMore}
+            to={`/posts/${post.slug}#post`}
             className="py-1 px-4 rounded border-2 border-white text-white inline-block"
           >
             Read More
