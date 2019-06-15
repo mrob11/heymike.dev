@@ -2,21 +2,26 @@ import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-// import TagList from "../components/tag-list"
+import Hero from "../components/hero"
+import Container from "../components/container"
+import PostFooter from "../components/post-footer"
 
-export default function Post({ data }) {
-  const { title, body } = data.contentfulBlogPost
+export default function Post({ data: { contentfulBlogPost: post } }) {
   return (
-    <Layout heroImageData={data.contentfulBlogPost.heroImage.fluid}>
-      <SEO title={title} />
-      <article className="post">
-        <h1>{title}</h1>
-        {/* <TagList tags={tags} /> */}
-        <section
-          className="body"
-          dangerouslySetInnerHTML={{ __html: body.childMarkdownRemark.html }}
-        />
-      </article>
+    <Layout heroImageData={post.heroImage.fluid}>
+      <SEO title={post.title} />
+      <Hero post={post} readMore={`/posts/${post.slug}#post`} />
+      <Container>
+        <article className="post" id="post">
+          <section
+            className="body"
+            dangerouslySetInnerHTML={{
+              __html: post.body.childMarkdownRemark.html,
+            }}
+          />
+          <PostFooter post={post} />
+        </article>
+      </Container>
     </Layout>
   )
 }
@@ -26,6 +31,12 @@ export const pageQuery = graphql`
     contentfulBlogPost(slug: { eq: $slug }) {
       title
       slug
+      author {
+        name
+      }
+      description {
+        description
+      }
       body {
         childMarkdownRemark {
           html
@@ -35,6 +46,7 @@ export const pageQuery = graphql`
         slug
         name
       }
+      publishDate(formatString: "MMM D, YYYY")
       heroImage {
         fluid(quality: 90, maxWidth: 2160) {
           ...GatsbyContentfulFluid_withWebp

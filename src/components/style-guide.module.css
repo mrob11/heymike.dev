@@ -1,4 +1,7 @@
 .styleGuide {
+  a {
+    @apply text-indigo-700;
+  }
   p {
     @apply leading-relaxed;
     @apply mb-4;
@@ -57,13 +60,17 @@
   }
 
   blockquote {
-    /* @apply text-center; */
-    @apply text-3xl;
-    /* @apply italic; */
+    @apply text-2xl;
     @apply px-8;
     @apply my-8;
+    @apply mx-4;
     @apply border-l-4;
     @apply border-blue-400;
     @apply tracking-tight;
+    @apply leading-snug;
+  }
+
+  pre {
+    @apply my-8;
   }
 }
