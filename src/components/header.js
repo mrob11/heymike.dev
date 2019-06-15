@@ -1,32 +1,14 @@
-import { Link } from "gatsby"
-import PropTypes from "prop-types"
 import React from "react"
+import PropTypes from "prop-types"
+import { Link } from "gatsby"
+import Logo from "../images/mike.inline.svg"
 
-const Header = ({ siteTitle }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
+const Header = ({ siteTitle, imageData }) => (
+  <header className="absolute top-0 left-0 w-full h-16 z-10 px-2">
+    <div className="container mx-auto flex flex-row h-full items-center">
+      <Link to="/">
+        <Logo className="stroke-current text-transparent" />
+      </Link>
     </div>
   </header>
 )

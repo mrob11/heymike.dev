@@ -1,27 +1,23 @@
 import React from "react"
-import { Link } from "gatsby"
-
+import { graphql } from "gatsby"
+import Hero from "../components/hero"
 import Layout from "../components/layout"
-// import Image from "../components/image"
 import SEO from "../components/seo"
+import PostPreview from "../components/post-preview"
 
 export default function IndexPage({ data }) {
-  const posts = data.allContentfulBlogPost.edges
+  const posts = data.allContentfulBlogPost.edges.slice(1)
+  const first = { ...data.allContentfulBlogPost.edges.slice(0, 1).pop().node }
+
   return (
     <Layout>
       <SEO title="Home" />
-      <section className="posts">
+      <Hero post={first} readMore={`/posts/${first.slug}`} />
+      <div className="container mx-auto flex flex-row flex-wrap md:px-32 lg:px-48">
         {posts.map(({ node: post }) => (
-          <article className="post" key={post.id}>
-            <h1 className="text-gray-800 text-3xl">
-              <Link to={`/posts/${post.slug}`}>{post.title}</Link>
-            </h1>
-            <section className="excerpt">
-              {post.description.description}
-            </section>
-          </article>
+          <PostPreview key={post.id} post={post} />
         ))}
-      </section>
+      </div>
     </Layout>
   )
 }
@@ -41,7 +37,19 @@ export const query = graphql`
           slug
           publishDate(formatString: "MMM D, YYYY")
           title
-          tags
+          heroImage {
+            fixed(quality: 90, width: 200, height: 200) {
+              ...GatsbyContentfulFixed_withWebp
+            }
+            fluid(quality: 90, maxWidth: 2160) {
+              ...GatsbyContentfulFluid_withWebp
+            }
+          }
+
+          tags {
+            name
+            slug
+          }
         }
       }
     }

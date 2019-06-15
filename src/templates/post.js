@@ -7,7 +7,7 @@ import SEO from "../components/seo"
 export default function Post({ data }) {
   const { title, body } = data.contentfulBlogPost
   return (
-    <Layout>
+    <Layout heroImageData={data.contentfulBlogPost.heroImage.fluid}>
       <SEO title={title} />
       <article className="post">
         <h1>{title}</h1>
@@ -31,7 +31,15 @@ export const pageQuery = graphql`
           html
         }
       }
-      tags
+      tags {
+        slug
+        name
+      }
+      heroImage {
+        fluid(quality: 90, maxWidth: 2160) {
+          ...GatsbyContentfulFluid_withWebp
+        }
+      }
     }
   }
 `

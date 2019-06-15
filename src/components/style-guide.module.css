@@ -1,0 +1,69 @@
+.styleGuide {
+  p {
+    @apply leading-relaxed;
+    @apply mb-4;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-bold;
+    @apply my-4;
+    @apply tracking-tight;
+    /* @apply text-gray-100; */
+  }
+
+  h1 {
+    @apply text-4xl;
+  }
+
+  h2 {
+    @apply text-3xl;
+  }
+
+  h3 {
+    @apply text-2xl;
+  }
+
+  h4 {
+    @apply text-xl;
+  }
+
+  h5 {
+    @apply text-lg;
+  }
+
+  img {
+    @apply shadow-lg;
+    @apply rounded-sm;
+  }
+
+  ol,
+  ul {
+    @apply list-outside;
+    @apply ml-8;
+    @apply mb-4;
+  }
+
+  ul {
+    @apply list-disc;
+  }
+
+  ol {
+    @apply list-decimal;
+  }
+
+  blockquote {
+    /* @apply text-center; */
+    @apply text-3xl;
+    /* @apply italic; */
+    @apply px-8;
+    @apply my-8;
+    @apply border-l-4;
+    @apply border-blue-400;
+    @apply tracking-tight;
+  }
+}
