@@ -6,16 +6,16 @@ export default function PostList({ posts = [] }) {
   return (
     <section>
       {posts.map((post) => (
-        <article key={post.id}>
+        <article key={post.sys.id}>
           <header>
             <h1>
-              <Link href={`/post/${post.slug}`}>
-                <a>{post.title}</a>
+              <Link href={`/post/${post.fields.slug}`}>
+                <a>{post.fields.title}</a>
               </Link>
             </h1>
-            <PostDate date={post.publishDate} />
+            <PostDate date={post.fields.publishDate} />
           </header>
-          <p>{post.description}</p>
+          <p>{post.fields.description}</p>
         </article>
       ))}
       <style jsx>{`

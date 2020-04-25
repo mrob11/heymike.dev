@@ -1,26 +1,10 @@
 import React from "react"
 import Head from "next/head"
+import client from "../lib/contentful"
 import Author from "../components/Author"
 import PostList from "../components/PostList"
 
-const posts = [
-  {
-    id: 1,
-    slug: "not-so-cool",
-    title: "Succulents listicle hot chicken small batch paleo",
-    description:
-      "Coloring book four loko tacos squid narwhal shaman gluten-free, waistcoat VHS live-edge heirloom single-origin coffee hoodie.",
-    publishDate: "2020-04-25T20:31:55.448Z",
-  },
-  {
-    id: 2,
-    slug: "really-cool-post",
-    title: "This is a post",
-    description: "And it is so cool",
-    publishDate: "2020-04-25T20:31:55.448Z",
-  },
-]
-export default function Index() {
+export default function Index({ posts = [] }) {
   return (
     <>
       <Head>
@@ -34,4 +18,16 @@ export default function Index() {
       <PostList posts={posts} />
     </>
   )
+}
+
+export async function getStaticProps(context) {
+  const posts = await client
+    .getEntries({ content_type: "blogPost" })
+    .then((response) => response.items)
+
+  return {
+    props: {
+      posts,
+    },
+  }
 }
