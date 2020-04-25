@@ -71,10 +71,7 @@ Cronut chicharrones organic typewriter wolf, 90's godard occupy vegan. Everyday 
 
 export async function getStaticPaths() {
   return {
-    paths: [
-      { params: { slug: "really-cool-post" } },
-      { params: { slug: "not-so-cool" } },
-    ],
+    paths: [{ params: { slug: "really-cool-post" } }],
     fallback: true,
   }
 }
