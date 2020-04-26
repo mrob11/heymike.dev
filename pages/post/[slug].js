@@ -21,9 +21,9 @@ export default function Post({ post }) {
         </section>
         <footer>
           <Author
-            name="Mike Robinson"
-            title="I build apps and stuff for the web."
-            avatar="https://avatars2.githubusercontent.com/u/243422?s=460&v=4"
+            name={post.fields.author.fields.name}
+            title={post.fields.author.fields.title}
+            avatar={post.fields.author.fields.avatar.fields.file.url}
           />
         </footer>
         <style jsx>{`
@@ -77,8 +77,9 @@ export async function getStaticPaths() {
     .getEntries({ content_type: "blogPost" })
     .then((response) => response.items)
   const paths = posts.map(({ fields: { slug } }) => ({ params: { slug } }))
+
   return {
     paths,
-    fallback: true,
+    fallback: false,
   }
 }
