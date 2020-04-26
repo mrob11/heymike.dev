@@ -13,7 +13,9 @@ export default function PostList({ posts = [] }) {
                 <a>{post.fields.title}</a>
               </Link>
             </h1>
-            <PostDate date={post.fields.publishDate} />
+            <small>
+              <PostDate date={post.fields.publishDate} />
+            </small>
           </header>
           <p>{post.fields.description}</p>
         </article>
