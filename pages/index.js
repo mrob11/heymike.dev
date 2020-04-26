@@ -16,6 +16,7 @@ export default function Index({ posts, author }) {
         avatar={author.fields.avatar.fields.file.url}
       />
       <PostList posts={posts} />
+      <img src="/mstile-150x150.png" />
     </>
   )
 }
