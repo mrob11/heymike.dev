@@ -13,7 +13,7 @@ export default function Index({ posts, author }) {
       <Author
         name={author.fields.name}
         title={author.fields.title}
-        avatar={author.fields.avatar.fields.url}
+        avatar={author.fields.avatar.fields.file.url}
       />
       <PostList posts={posts} />
     </>
@@ -25,6 +25,7 @@ export async function getStaticProps(context) {
     .getEntries({ content_type: "blogPost" })
     .then((response) => response.items)
   const author = await client.getEntry("47Ep8zzZhhvWSCloWxS3T5")
+
   return {
     props: {
       posts,

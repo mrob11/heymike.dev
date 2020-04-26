@@ -4,6 +4,7 @@ import Markdown from "react-markdown"
 import client from "../../lib/contentful"
 import PostDate from "../../components/PostDate"
 import Author from "../../components/Author"
+import CodeBlock from "../../components/CodeBlock"
 
 export default function Post({ post }) {
   return (
@@ -14,10 +15,16 @@ export default function Post({ post }) {
       <article>
         <header>
           <h1>{post.fields.title}</h1>
-          <PostDate date={post.fields.publishDate} />
+          <small>
+            Published: <PostDate date={post.fields.publishDate} />
+          </small>
         </header>
         <section>
-          <Markdown source={post.fields.body} escapeHtml={true} />
+          <Markdown
+            source={post.fields.body}
+            escapeHtml={true}
+            renderers={{ code: CodeBlock }}
+          />
         </section>
         <footer>
           <Author
@@ -27,14 +34,20 @@ export default function Post({ post }) {
           />
         </footer>
         <style jsx>{`
+          header {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #949499;
+          }
           header h1 {
             font-family: "Passion One", sans-serif;
             font-size: 3rem;
             font-weight: 400;
+            margin-bottom: 1rem;
           }
           section :global(p) {
             line-height: 1.75rem;
-            margin-bottom: 2rem;
+            margin: 2rem 0;
           }
           section :global(img) {
             max-width: 100%;
@@ -45,10 +58,14 @@ export default function Post({ post }) {
             padding: 0 2rem;
             color: #646469;
           }
-          section :global(code) {
-            background: #fff6de;
-            padding: 0 0.1rem;
-            border-radius: 0.2rem;
+          section :global(li) {
+            margin: 1rem 0;
+            line-height: 1.5rem;
+          }
+          section :global(hr) {
+            border: none;
+            background: #949499;
+            height: 1px;
           }
         `}</style>
       </article>
