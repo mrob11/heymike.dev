@@ -4,16 +4,16 @@ import client from "../lib/contentful"
 import Author from "../components/Author"
 import PostList from "../components/PostList"
 
-export default function Index({ posts = [] }) {
+export default function Index({ posts, author }) {
   return (
     <>
       <Head>
         <title>Hey Mike — A blog by Mike Robinson</title>
       </Head>
       <Author
-        name="Mike Robinson"
-        title="I build apps and stuff for the web."
-        avatar="https://avatars2.githubusercontent.com/u/243422?s=460&v=4"
+        name={author.fields.name}
+        title={author.fields.title}
+        avatar={author.fields.avatar.fields.url}
       />
       <PostList posts={posts} />
     </>
@@ -24,10 +24,11 @@ export async function getStaticProps(context) {
   const posts = await client
     .getEntries({ content_type: "blogPost" })
     .then((response) => response.items)
-
+  const author = await client.getEntry("47Ep8zzZhhvWSCloWxS3T5")
   return {
     props: {
       posts,
+      author,
     },
   }
 }
