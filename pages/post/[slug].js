@@ -1,7 +1,7 @@
 import React from "react"
 import Head from "next/head"
 import Markdown from "react-markdown"
-import client from "../../lib/contentful"
+import getClient from "../../lib/contentful"
 import PostDate from "../../components/PostDate"
 import Author from "../../components/Author"
 import CodeBlock from "../../components/CodeBlock"
@@ -74,6 +74,7 @@ export default function Post({ post }) {
 }
 
 export async function getStaticProps(context) {
+  const client = getClient(context.preview)
   const result = await client
     .getEntries({
       content_type: "blogPost",
@@ -90,6 +91,7 @@ export async function getStaticProps(context) {
 }
 
 export async function getStaticPaths() {
+  const client = getClient()
   const posts = await client
     .getEntries({ content_type: "blogPost" })
     .then((response) => response.items)

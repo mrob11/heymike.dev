@@ -1,6 +1,6 @@
 import React from "react"
 import Head from "next/head"
-import client from "../lib/contentful"
+import getClient from "../lib/contentful"
 import Author from "../components/Author"
 import PostList from "../components/PostList"
 
@@ -22,6 +22,7 @@ export default function Index({ posts, author }) {
 }
 
 export async function getStaticProps(context) {
+  const client = getClient()
   const posts = await client
     .getEntries({ content_type: "blogPost" })
     .then((response) => response.items)
