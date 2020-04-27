@@ -9,7 +9,7 @@ import "normalize.css"
 const links = [
   { id: 1, url: "https://github.com/mike360", title: "GitHub" },
   { id: 2, url: "https://linkedin.com/in/mdrobinson", title: "LinkedIn" },
-  { id: 3, url: "https://twitter.com/mike360", title: "Twitter" },
+  { id: 3, url: "https://mike-robinson.ca", title: "Resume" },
 ]
 
 export default function App({ Component, pageProps }) {
