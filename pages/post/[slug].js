@@ -1,74 +1,15 @@
 import React from "react"
 import Head from "next/head"
-import Markdown from "react-markdown"
 import getClient from "../../lib/contentful"
-import PostDate from "../../components/PostDate"
-import Author from "../../components/Author"
-import CodeBlock from "../../components/CodeBlock"
+import Post from "../../components/Post"
 
-export default function Post({ post }) {
+export default function PostBySlug({ post }) {
   return (
     <>
       <Head>
-        <title>{post.fields.title} | Hey Mike</title>
+        <title>{post.fields.title} — Hey Mike</title>
       </Head>
-      <article>
-        <header>
-          <h1>{post.fields.title}</h1>
-          <small>
-            Published: <PostDate date={post.fields.publishDate} />
-          </small>
-        </header>
-        <section>
-          <Markdown
-            source={post.fields.body}
-            escapeHtml={true}
-            renderers={{ code: CodeBlock }}
-          />
-        </section>
-        <footer>
-          <Author
-            name={post.fields.author.fields.name}
-            title={post.fields.author.fields.title}
-            avatar={post.fields.author.fields.avatar.fields.file.url}
-          />
-        </footer>
-        <style jsx>{`
-          header {
-            margin-bottom: 2rem;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid #949499;
-          }
-          header h1 {
-            font-family: "Passion One", sans-serif;
-            font-size: 3rem;
-            font-weight: 400;
-            margin-bottom: 1rem;
-          }
-          section :global(p) {
-            line-height: 1.75rem;
-            margin: 2rem 0;
-          }
-          section :global(img) {
-            max-width: 100%;
-          }
-          section :global(blockquote) {
-            border-left: 0.5rem solid #949499;
-            margin-left: 0;
-            padding: 0 2rem;
-            color: #646469;
-          }
-          section :global(li) {
-            margin: 1rem 0;
-            line-height: 1.5rem;
-          }
-          section :global(hr) {
-            border: none;
-            background: #949499;
-            height: 1px;
-          }
-        `}</style>
-      </article>
+      <Post post={post} />
     </>
   )
 }
