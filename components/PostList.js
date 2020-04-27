@@ -18,6 +18,11 @@ export default function PostList({ posts = [] }) {
             </small>
           </header>
           <p>{post.fields.description}</p>
+          <p>
+            <Link href={`/post/${post.fields.slug}`}>
+              <a>Continue reading »</a>
+            </Link>
+          </p>
         </article>
       ))}
       <style jsx>{`
