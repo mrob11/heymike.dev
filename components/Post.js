@@ -32,11 +32,13 @@ export default function Post({ post }) {
         />
       </section>
       <footer>
-        <Author
-          name={post.fields.author.fields.name}
-          title={post.fields.author.fields.title}
-          avatar={post.fields.author.fields.avatar.fields.file.url}
-        />
+        {post.fields.author && (
+          <Author
+            name={post.fields.author.fields.name}
+            title={post.fields.author.fields.title}
+            avatar={post.fields.author.fields.avatar.fields.file.url}
+          />
+        )}
       </footer>
       <style jsx>{`
         header {
