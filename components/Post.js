@@ -11,7 +11,14 @@ export default function Post({ post }) {
       <header>
         <h1>{post.fields.title}</h1>
         <small>
-          Published: <PostDate date={post.fields.publishDate} />
+          <p>
+            Published: <PostDate date={post.fields.publishDate} />
+          </p>
+          {post.fields.updatedDate && (
+            <p>
+              Updated: <PostDate date={post.fields.updatedDate} />
+            </p>
+          )}
         </small>
       </header>
       <section>
