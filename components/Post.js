@@ -1,7 +1,6 @@
 import React from "react"
 import Markdown from "react-markdown"
 import Author from "./Author"
-import Image from "./Image"
 import CodeBlock from "./CodeBlock"
 import PostDate from "./PostDate"
 
@@ -20,7 +19,6 @@ export default function Post({ post }) {
           escapeHtml={true}
           renderers={{
             code: CodeBlock,
-            image: Image,
           }}
         />
       </section>
