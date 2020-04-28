@@ -22,6 +22,8 @@ export default function PostBySlug({ post }) {
         <title>{post.fields.title} — Hey Mike</title>
         <meta name="title" content={post.fields.title} />
         <meta name="description" content={post.fields.description} />
+        <meta property="og:title" content={post.fields.title} />
+        <meta property="og:description" content={post.fields.description} />
       </Head>
       <Post post={post} />
     </>
