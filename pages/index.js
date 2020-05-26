@@ -24,7 +24,7 @@ export default function Index({ posts, author }) {
 export async function getStaticProps(context) {
   const client = getClient()
   const posts = await client
-    .getEntries({ content_type: "blogPost" })
+    .getEntries({ content_type: "blogPost", order: "-fields.publishedAt" })
     .then((response) => response.items)
   const author = await client.getEntry("47Ep8zzZhhvWSCloWxS3T5")
 
