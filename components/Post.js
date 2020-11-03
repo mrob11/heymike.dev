@@ -11,11 +11,11 @@ export default function Post({ post }) {
         <h1>{post.fields.title}</h1>
         <small>
           <p>
-            Published: <PostDate date={post.fields.publishDate} />
+            Published: <PostDate date={post.sys.createdAt} />
           </p>
-          {post.fields.updatedDate && (
+          {post.sys.updatedAt && (
             <p>
-              Updated: <PostDate date={post.fields.updatedDate} />
+              Updated: <PostDate date={post.sys.updatedAt} />
             </p>
           )}
         </small>

@@ -15,7 +15,7 @@ export default function PostList({ posts = [] }) {
             </h1>
             <small>
               <p>
-                Published: <PostDate date={post.fields.publishDate} />
+                Published: <PostDate date={post.sys.createdAt} />
               </p>
             </small>
           </header>
