@@ -7,7 +7,7 @@ import "normalize.css"
 // TODO: Fetch this in getStaticProps when it's made available from _app.js
 // See https://github.com/zeit/next.js/discussions/10949
 const links = [
-  { id: 1, url: "https://github.com/mike360", title: "GitHub" },
+  { id: 1, url: "https://github.com/mrob11", title: "GitHub" },
   { id: 2, url: "https://linkedin.com/in/mdrobinson", title: "LinkedIn" },
   { id: 3, url: "https://mike-robinson.ca", title: "Resume" },
 ]
