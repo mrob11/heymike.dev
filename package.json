@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/mike360/heymike.dev#readme",
   "dependencies": {
-    "contentful": "^7.14.3",
+    "contentful": "^8.1.7",
     "luxon": "^1.23.0",
     "next": "^10.0.0",
     "normalize.css": "^8.0.1",
