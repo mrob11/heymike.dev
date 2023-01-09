@@ -22,7 +22,7 @@
   "homepage": "https://github.com/mike360/heymike.dev#readme",
   "dependencies": {
     "contentful": "^8.1.7",
-    "luxon": "^1.23.0",
+    "luxon": "^1.28.1",
     "next": "^11.1.3",
     "normalize.css": "^8.0.1",
     "prismjs": "^1.25.0",
